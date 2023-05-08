@@ -1,0 +1,40 @@
+<nav class="bg-gray-800 shadow-2xl sticky top-0 z-50">
+    <div class="flex items-center h-16 ">
+        <div class="inset-y-0 left-0 flex items-center sm:hidden px-2">
+            <!-- Mobile menu button-->
+            <button type="button" class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false" (click)="toggleMenu()">
+              <svg class="block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" *ngIf="!showMenu">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+              <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" *ngIf="showMenu">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+        </div>
+        <div class="flex flex-1">
+            <div class="flex-shrink-0">
+                <a routerLink="home">
+                    <img class="h-10 w-auto sm:ml-4" src="assets/angular.png" alt="website-logo" srcset="">
+                </a>
+            </div>
+        </div>
+        <!--main menu items -->
+        <div class="hidden mr-6 sm:block">
+            <div class="flex space-x-4">
+                <a routerLink="home" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 rounded-md px-3 py-2 text-sm font-medium">Home</a>
+                <a routerLink="categories" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 rounded-md px-3 py-2 text-sm font-medium" >Topics</a>
+                <a routerLink="write" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 rounded-md px-3 py-2 text-sm font-medium" >Write</a>
+                <a routerLink="signin" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 rounded-md px-3 py-2 text-sm font-medium" >Sign In</a>
+            </div>
+        </div>
+    </div>
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div class="sm:hidden" id="mobile-menu" *ngIf="showMenu">
+        <div class="space-y-1 px-2 pb-3 pt-2">
+            <a routerLink="home" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Home</a>
+            <a routerLink="categories" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 block rounded-md px-3 py-2 text-base font-medium">Topics</a>
+            <a routerLink="write" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 block rounded-md px-3 py-2 text-base font-medium">Write</a>
+            <a routerLink="signin" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 block rounded-md px-3 py-2 text-base font-medium">Sign In</a>
+        </div>
+    </div>
+</nav>
