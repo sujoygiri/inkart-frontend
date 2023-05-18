@@ -1,0 +1,40 @@
+<div class="mx-8">
+  <div class="px-4 shadow-2xl max-w-xs sm:max-w-md mx-auto">
+    <div class="py-4 px-4 rounded-md">
+      <form method="post" class="flex flex-col" [formGroup]="registerForm" (submit)="register()">
+        <label for="name" class="mt-4 pl-0.5 pb-1">Name</label>
+        <input [ngClass]="{'border border-gray-400 rounded focus:outline-none px-2 py-1 sm:px-3 sm:py-2':true,'border-red-500':registerForm.controls['name'].dirty && registerForm.controls['name'].invalid}" type="text" name="name" id="name" formControlName="name">
+        <!-- error message -->
+        <div class="pl-0.5" *ngIf="registerForm.controls['name']?.dirty && registerForm.controls['name']?.invalid">
+          <span class="text-red-600" *ngIf="registerForm.controls['name']?.errors?.['required']">Name is required</span>
+          <span class="text-red-600" *ngIf="registerForm.controls['name']?.errors?.['minlength']">Name must be minimum of 3 letters long</span>
+          <span class="text-red-600" *ngIf="registerForm.controls['name']?.errors?.['maxlength']">Name must be maximum of 20 letters long</span>
+        </div>
+        <label for="email" class="mt-4 pl-0.5 pb-1">Email</label>
+        <input [ngClass]="{'border border-gray-400 rounded focus:outline-none px-2 py-1 sm:px-3 sm:py-2':true,'border-red-500':registerForm.controls['email'].dirty && registerForm.controls['email'].invalid}" type="email" name="email" id="email" formControlName="email">
+        <!-- error message -->
+        <div class="pl-0.5" *ngIf="registerForm.controls['email']?.dirty && registerForm.controls['email']?.invalid">
+          <span class="text-red-600" *ngIf="registerForm.controls['email']?.errors?.['required']">Email is required</span>
+          <span class="text-red-600" *ngIf="registerForm.controls['email']?.errors?.['email']">Invalid email id</span>
+        </div>
+        <label for="password" class="mt-4 pl-0.5 pb-1">Password</label>
+        <input [ngClass]="{'border border-gray-400 rounded focus:outline-none px-2 py-1 sm:px-3 sm:py-2':true,'border-red-500':registerForm.controls['password'].dirty && registerForm.controls['password'].invalid}" type="password" name="password" id="password" formControlName="password">
+        <!-- error message -->
+        <div class="pl-0.5" *ngIf="registerForm.controls['password']?.dirty && registerForm.controls['password']?.invalid">
+          <span class="text-red-600" *ngIf="registerForm.controls['password']?.errors?.['required']">Password is required</span>
+          <!-- <span class="text-red-600" *ngIf="registerForm.controls['password']?.errors?.['minlength']">Password must be minimum of 8 charecters long</span>
+          <span class="text-red-600" *ngIf="registerForm.controls['password']?.errors?.['maxlength']">Password must be maximum of 20 charecters long</span> -->
+          <span class="text-red-600" *ngIf="registerForm.controls['password']?.errors?.['pattern']">Password must be contain one uppercase, one lowercase, one number, one special charecter and 8 to 20 charecters long</span>
+        </div>
+        <label for="retype_password" class="mt-4 pl-0.5 pb-1">Confirm Password</label>
+        <input [ngClass]="{'border border-gray-400 rounded focus:outline-none px-2 py-1 sm:px-3 sm:py-2':true,'border-red-500':registerForm.controls['retype_password'].dirty && registerForm.controls['retype_password'].invalid}" type="password" name="retype_password" id="retype_password" formControlName="retype_password">
+        <!-- error message -->
+        <div class="pl-0.5" *ngIf="registerForm.controls['retype_password']?.dirty && registerForm.controls['retype_password']?.invalid">
+          <span class="text-red-600" *ngIf="registerForm.controls['retype_password']?.errors?.['required']">Re type above password again</span>
+          <span class="text-red-600" *ngIf="registerForm.controls['retype_password']?.errors?.['isTwoPasswordMatched']">Password did not match</span>
+        </div>
+        <button class="text-white bg-cyan-600 rounded hover:bg-cyan-700 px-8 py-2 mt-4">Sign Up</button>
+      </form>
+    </div>
+  </div>
+</div>

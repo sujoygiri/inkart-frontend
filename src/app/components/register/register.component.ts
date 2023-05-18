@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -12,20 +11,29 @@ export class RegisterComponent implements OnInit {
   registerForm!:FormGroup;
 
   constructor(
-    private fromBuilder:FormBuilder,
-    private http:HttpClient
+    private fromBuilder:FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.registerForm = this.fromBuilder.group({
       name:['',[Validators.required,Validators.minLength(3),Validators.maxLength(20)]],
       email:['',[Validators.required,Validators.email]],
-      password:['',[Validators.required,Validators.minLength(8),Validators.maxLength(16)]],
-      retype_password:['',[Validators.required,Validators.minLength(8),Validators.maxLength(16)]]
+      password:['',[Validators.required,Validators.pattern(/^(?=.*[\d])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,20}$/)]],
+      retype_password:['',[Validators.required,this.isTwoPasswordMatched.bind(this)]],
     })
   }
 
+  isTwoPasswordMatched(formControl:FormControl){
+    if(formControl.value !== this.registerForm?.value?.password){
+      return {isTwoPasswordMatched:'Password did not matched'}
+    }
+    return null;
+  }
+
   register(){
+    if(this.registerForm.invalid){
+      return;
+    }
     console.log(this.registerForm);
     // this.http.post('http://
   }
