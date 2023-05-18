@@ -1,30 +1,46 @@
-import { Component } from '@angular/core';
-import {Subscription} from 'rxjs'
+import { Component, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 import { GlobalService } from 'src/app/global.service';
-import { LoginData } from 'src/app/model/auth-data-model';
+import { AuthService } from 'src/app/services/auth.service';
+import { LoginData, ServerAuthResponse } from 'src/app/types/auth-data.type';
 
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.css']
+  styleUrls: ['./signin.component.css'],
 })
-export class SigninComponent {
-  loginSubscription!:Subscription;
-  constructor(private globalService:GlobalService) {}
-  login(data:LoginData){
-    this.loginSubscription = this.globalService.login(data).subscribe({
-      next: (result:any) => {
-        console.log(result);
+export class SigninComponent implements OnDestroy {
+  loginSubscription!: Subscription;
+
+  constructor(
+    private globalService: GlobalService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
+  login(data: LoginData) {
+    this.loginSubscription = this.authService.login(data).subscribe({
+      next: (result: ServerAuthResponse) => {
+        if(result.status === 'success'){
+          this.globalService.isLoggedIn = true;
+          this.globalService.userName = result.userName;
+        }
       },
-      error: (error:any) => {
+      error: (error: any) => {
         console.log(error);
       },
       complete: () => {
-        console.log("complete");
+        this.router.navigate(['/home']);
       }
-    })
-
+    });
   }
 
+  ngOnDestroy() {
+    if(this.loginSubscription){
+      this.loginSubscription.unsubscribe();
+    }
+      
+  }
 }

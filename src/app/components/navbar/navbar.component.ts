@@ -4,11 +4,27 @@ import { Component } from '@angular/core';
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
+  host:{
+    '(window:click)':'onClickOutside()'
+  }
 })
 export class NavbarComponent {
-  showMenu: boolean = false;
+  showMainMenu: boolean = false;
+  showProfileMenu:boolean = false
+  
   constructor() {}
+
   toggleMenu() {
-    this.showMenu = !this.showMenu;
+    this.showMainMenu = !this.showMainMenu;
   }
+
+  toggleProfileMenu($event: any){
+    $event.stopPropagation();   
+    this.showProfileMenu = !this.showProfileMenu;
+  }
+
+  onClickOutside(){
+    this.showProfileMenu = false;
+  }
+
 }
