@@ -14,15 +14,14 @@ export const authGuard: CanActivateFn = (route, state) => {
     map((response:any) => {
       if(response.status === 'success'){
         globalService.userName = response.userName;
+        globalService.isLoggedIn = true
         router.navigate(['/home']);
         return false;
       }else{
-        router.navigate(['/login']);
         return true;
       }
     }),
     catchError(() => {
-      router.navigate(['/login']);
       return of(false);
     })
   );
