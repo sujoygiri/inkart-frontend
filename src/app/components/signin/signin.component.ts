@@ -40,6 +40,7 @@ export class SigninComponent implements OnInit, OnDestroy {
       next: (response: ServerAuthResponse) => {
         if(response.status === 'success'){
           this.globalService.isLoggedIn = true;
+          this.globalService.profilePic = response.profile_pic
           this.globalService.userName = response.userName;
         }
       },

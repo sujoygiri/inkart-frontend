@@ -4,6 +4,7 @@ import { catchError, map, of } from 'rxjs';
 
 import { GlobalService } from '../global.service';
 import { AuthService } from '../services/auth.service';
+import { ServerAuthResponse } from '../types/auth-data.type';
 
 export const authGuard: CanActivateFn = (route, state) => {
   const globalService = inject(GlobalService)
@@ -11,10 +12,11 @@ export const authGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
 
   return authService.authenticate().pipe(
-    map((response:any) => {
+    map((response:ServerAuthResponse) => {
       if(response.status === 'success'){
-        globalService.userName = response.userName;
         globalService.isLoggedIn = true
+        globalService.userName = response.userName;
+        globalService.profilePic = response.profile_pic
         router.navigate(['/home']);
         return false;
       }else{
