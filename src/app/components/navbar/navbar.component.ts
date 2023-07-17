@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { GlobalService } from 'src/app/global.service';
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -12,7 +14,7 @@ export class NavbarComponent {
   showMainMenu: boolean = false;
   showProfileMenu:boolean = false
   
-  constructor() {}
+  constructor(protected globalService:GlobalService) {}
 
   toggleMenu() {
     this.showMainMenu = !this.showMainMenu;

@@ -23,8 +23,9 @@ export class AppComponent implements OnInit, OnDestroy {
     this.sessionSubscription = this.authService.authenticate().subscribe({
       next: (response: ServerAuthResponse) => {
         if(response.status === 'success'){
-          this.globalService.userName = response.userName;
           this.globalService.isLoggedIn = true;
+          this.globalService.profilePic = response.profile_pic
+          this.globalService.userName = response.userName;
         }
       },
       error: (error: any) => {
