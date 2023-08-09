@@ -13,15 +13,16 @@
         </div>
         <div class="flex flex-1">
             <div class="flex-shrink-0">
-                <a routerLink="home">
+                <a routerLink="/" class="flex items-center">
                     <img class="h-10 w-auto sm:ml-4" src="assets/angular.png" alt="website-logo" srcset="">
+                    <p class="text-3xl uppercase text-white">INKART</p>
                 </a>
             </div>
         </div>
         <!--main menu items -->
       <div [ngClass]="{'hidden sm:block':true,'mr-4':!globalService.isLoggedIn}">
         <div class="flex space-x-4">
-          <a routerLink="home" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 rounded-md px-3 py-2 text-sm font-medium">Home</a>
+          <!-- <a routerLink="home" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 rounded-md px-3 py-2 text-sm font-medium">Home</a> -->
           <a routerLink="categories" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 rounded-md px-3 py-2 text-sm font-medium" >Topics</a>
           <a routerLink="write" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 rounded-md px-3 py-2 text-sm font-medium" >Write</a>
           <a routerLink="signin" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 rounded-md px-3 py-2 text-sm font-medium" *ngIf="!globalService.isLoggedIn">Sign In</a>
@@ -33,7 +34,7 @@
           <div>
             <button type="button" class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true" (click)="toggleProfileMenu($event)" >
               <span class="sr-only">Open user menu</span>
-              <img class="h-8 w-8 rounded-full" src="{{'http://localhost:3000/uploads/images/'+globalService.profilePic}}" alt="{{globalService.profilePic}}">
+              <img class="h-8 w-8 rounded-full" src="{{'http://localhost:3000/uploads/user_profile_pic/'+globalService.profilePic}}" alt="{{globalService.profilePic}}">
             </button>
           </div>
           <!--
@@ -58,7 +59,7 @@
     <!-- Mobile menu, show/hide based on menu state. -->
     <div class="sm:hidden" id="mobile-menu" *ngIf="showMainMenu">
         <div class="space-y-1 px-2 pb-3 pt-2">
-            <a routerLink="home" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Home</a>
+            <!-- <a routerLink="home" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Home</a> -->
             <a routerLink="categories" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 block rounded-md px-3 py-2 text-base font-medium">Topics</a>
             <a routerLink="write" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 block rounded-md px-3 py-2 text-base font-medium">Write</a>
             <a routerLink="signin" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 block rounded-md px-3 py-2 text-base font-medium" *ngIf="!globalService.isLoggedIn">Sign In</a>
