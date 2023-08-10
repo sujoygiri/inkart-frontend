@@ -1,4 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
+/* *{
+  margin: 0;
+} */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+
+  h1 {
+    @apply text-4xl;
+  }
+  h2 {
+    @apply text-2xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+  h4 {
+    @apply text-base;
+  }
+  h5 {
+    @apply text-sm;
+  }
+  h6 {
+    @apply text-xs;
+  }
+  ol {
+    @apply list-decimal;
+    @apply pl-10;
+    @apply m-auto;
+  }
+  ul {
+    @apply list-disc;
+    @apply pl-10;
+    @apply m-auto;
+  }
+  /* ... */
+}

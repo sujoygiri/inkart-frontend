@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 import { GlobalService } from 'src/app/global.service';
+import {PostService} from "../../services/post.service";
+import {PostFetchResponseType} from "../../types/post-fetch-response.type";
 
 interface Post {
-  author: string;
-  profile_image: string;
   title: string;
-  content: string;
+  description: string;
   image: string;
+  link: string;
+  createdAt: Date;
 }
 
 @Component({
@@ -16,45 +18,8 @@ interface Post {
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  posts: Post[] = [
-    {
-      author: 'Sara kane',
-      profile_image: 'assets/images/profile1.jpg',
-      title:
-        'lorem epsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-      content:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-      image: 'assets/images/4.jpg',
-    },
-    {
-      author: 'Jhon Doe',
-      profile_image: 'assets/images/profile2.jpg',
-      title:
-        'lorem epsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-      content:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-      image: 'assets/images/1.jpg',
-    },
-    {
-      author: 'Tomas Doe',
-      profile_image: 'assets/images/profile3.jpg',
-      title:
-        'lorem epsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-      content:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-      image: 'assets/images/2.jpg',
-    },
-    {
-      author: 'kate Smith',
-      profile_image: 'assets/images/profile4.jpg',
-      title:
-        'lorem epsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-      content:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.',
-      image: 'assets/images/3.jpg',
-    },
-  ];
 
+  posts:Post[] = []
   topics: string[] = [
     'Data Science',
     'Productivity',
@@ -67,7 +32,16 @@ export class HomeComponent implements OnInit {
   isLoggedIn: boolean = false;
   userName: string = '';
 
-  constructor(protected globalService: GlobalService) {}
+  constructor(protected globalService: GlobalService, private postService:PostService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.postService.fetchPost().subscribe({
+      next:(response: PostFetchResponseType)=>{
+        this.posts = response.posts
+      },
+      error:(err)=>{
+        console.log(err)
+      }
+    })
+  }
 }

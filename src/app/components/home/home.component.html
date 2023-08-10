@@ -4,20 +4,20 @@
             <div class="flex pb-10">
                 <div class="flex">
                     <div class="block h-20 md:h-30 lg:h-36 mr-4">
-                        <div class="flex">
-                            <div class="shrink-0">
-                                <img class="rounded-full h-6 w-6" src="{{post.profile_image}}" alt="">
-                            </div>
-                            <div class="ml-2">
-                                <p>{{post.author}}</p>
-                            </div>
-                        </div>
+<!--                        <div class="flex">-->
+<!--                            <div class="shrink-0">-->
+<!--                                <img class="rounded-full h-6 w-6" src="{{post.profile_image}}" alt="">-->
+<!--                            </div>-->
+<!--                            <div class="ml-2">-->
+<!--                                <p>{{post.author}}</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
                         <div class="mt-1 pb-2 ">
-                            <a href="#">
+                            <a [routerLink]="['/post' + '/' + post.link]">
                                 <div class="line-clamp-2 overflow-hidden">
-                                    <p href="#" class="block text-base leading-tight md:text-lg lg:leading-6 font-bold text-black cursor-pointer hover:underline">{{post.title | titlecase}}</p>
+                                    <p class="block text-base leading-tight md:text-lg lg:leading-6 font-bold text-black cursor-pointer hover:underline">{{post.title | titlecase}}</p>
                                 </div>
-                                <p class="hidden lg:block mt-1 text-slate-500 text-base leading-tight">{{post.content}}</p>
+                                <p class="hidden lg:block mt-1 text-slate-500 text-base leading-tight">{{post.description}}</p>
                             </a>
                         </div>
                         <div class="flex space-x-4 pt-1 ">
@@ -25,8 +25,8 @@
                             <a href="" class="bg-slate-300 text-xs px-2 py-1 rounded-full text-center text-black">Coding</a>
                         </div>
                     </div>
-                    <a href="" class="block w-56 md:w-80 lg:w-72">
-                        <img class="items-end h-24 w-56 py-2 md:h-32 md:w-80 lg:h-40 lg:w-72"  src="{{post.image}}" alt="thumbnail">
+                    <a [routerLink]="['/post' + '/' + post.link]" class="block w-56 md:w-80 lg:w-72">
+                        <img class="items-end h-24 w-56 py-2 md:h-32 md:w-80 lg:h-40 lg:w-72" src="{{post.image}}" alt="thumbnail">
                     </a>
                 </div>
             </div>
@@ -43,6 +43,6 @@
                     <p class="bg-slate-300 text-sm mr-2 mt-2 px-3 py-2 rounded-full text-center text-black">{{topic}}</p>
                 </a>
             </div>
-        </div> 
+        </div>
     </div>
 </div>

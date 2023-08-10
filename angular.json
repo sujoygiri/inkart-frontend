@@ -13,6 +13,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "lodash",
+              "@ckeditor/ckeditor5-build-classic"
+            ],
             "outputPath": "dist/inkart",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -27,7 +31,16 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/@editorjs/header/dist/bundle.js",
+              "node_modules/@editorjs/list/dist/bundle.js",
+              "node_modules/@editorjs/embed/dist/bundle.js",
+              "node_modules/@editorjs/quote/dist/bundle.js",
+              "node_modules/@editorjs/link/dist/bundle.js",
+              "node_modules/@editorjs/image/dist/bundle.js",
+              "node_modules/@editorjs/delimiter/dist/bundle.js",
+              "node_modules/@editorjs/code/dist/bundle.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -94,5 +107,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

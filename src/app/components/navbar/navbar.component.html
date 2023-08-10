@@ -1,4 +1,4 @@
-<nav class="bg-gray-800 shadow-2xl sticky top-0 z-50">
+<nav class="bg-gray-800 shadow-2xl sticky top-0 z-50 m-0 p-0">
     <div class="flex items-center h-16 ">
         <div class="inset-y-0 left-0 flex items-center sm:hidden px-2">
             <!-- Mobile menu button-->
@@ -21,10 +21,10 @@
         <!--main menu items -->
       <div [ngClass]="{'hidden sm:block':true,'mr-4':!globalService.isLoggedIn}">
         <div class="flex space-x-4">
-          <a routerLink="home" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 rounded-md px-3 py-2 text-sm font-medium">Home</a>
-          <a routerLink="categories" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 rounded-md px-3 py-2 text-sm font-medium" >Topics</a>
-          <a routerLink="write" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 rounded-md px-3 py-2 text-sm font-medium" >Write</a>
-          <a routerLink="signin" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 rounded-md px-3 py-2 text-sm font-medium" *ngIf="!globalService.isLoggedIn">Sign In</a>
+          <a routerLink="home" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 rounded-md px-3 py-2 text-sm font-medium text no-underline">Home</a>
+          <a routerLink="categories" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 rounded-md px-3 py-2 text-sm font-medium no-underline" >Topics</a>
+          <a routerLink="write" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 rounded-md px-3 py-2 text-sm font-medium no-underline" >Write</a>
+          <a routerLink="signin" routerLinkActive="bg-red-600 hover:bg-red-600 text-white" class="text-gray-300 hover:bg-gray-700 rounded-md px-3 py-2 text-sm font-medium no-underline" *ngIf="!globalService.isLoggedIn">Sign In</a>
         </div>
       </div>
       <!-- Profile icon-->   
@@ -33,7 +33,7 @@
           <div>
             <button type="button" class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true" (click)="toggleProfileMenu($event)" >
               <span class="sr-only">Open user menu</span>
-              <img class="h-8 w-8 rounded-full" src="{{'http://localhost:3000/uploads/images/'+globalService.profilePic}}" alt="{{globalService.profilePic}}">
+              <img class="h-8 w-8 rounded-full" src="{{'http://localhost:8080/uploads/images/'+globalService.profilePic}}" alt="{{globalService.profilePic}}">
             </button>
           </div>
           <!--
