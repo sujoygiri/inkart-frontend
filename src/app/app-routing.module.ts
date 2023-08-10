@@ -11,12 +11,13 @@ import {
   PostDetailComponent
 } from "./components/post-detail/post-detail.component";
 import { authGuard } from './guard/auth.guard';
+import { routeGuard } from './guard/route.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'signin', component: SigninComponent, canActivate: [authGuard] },
-  { path: 'register', component: RegisterComponent, canActivate: [authGuard] },
-  { path: 'write', component: PostCreatingComponent },
+  { path: 'login', component: SigninComponent, canActivate: [authGuard] },
+  { path: 'signup', component: RegisterComponent, canActivate: [authGuard] },
+  { path: 'write', component: PostCreatingComponent, canActivate:[routeGuard] },
   { path: 'post/:title', component: PostDetailComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

@@ -28,16 +28,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.registerForm = this.fromBuilder.group({
       name:['',[Validators.required,Validators.minLength(3),Validators.maxLength(20)]],
       email:['',[Validators.required,Validators.pattern(/^[a-zA-Z0-9.]+@[a-zA-Z0-9.]+\.[a-zA-Z]{2,}/)]],
-      password:['',[Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,20}$/)]],
-      retype_password:['',[Validators.required,this.isTwoPasswordMatched.bind(this)]],
+      password:['',[Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,20}$/)]]
     })
-  }
-
-  isTwoPasswordMatched(formControl:FormControl){
-    if(formControl.value !== this.registerForm?.value?.password){
-      return {isTwoPasswordMatched:'Password did not matched'}
-    }
-    return null;
   }
 
   register(){
@@ -49,6 +41,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       next:(response:ServerAuthResponse)=>{
         if(response.status === 'success'){
           this.globalService.userName = response.userName;
+          this.globalService.profilePic = response.profile_pic
           this.globalService.isLoggedIn = true;
         }
       },

@@ -17,7 +17,7 @@ export const authGuard: CanActivateFn = (route, state) => {
         globalService.isLoggedIn = true
         globalService.userName = response.userName;
         globalService.profilePic = response.profile_pic
-        router.navigate(['/home']);
+        router.navigate(['/']);
         return false;
       }else{
         return true;

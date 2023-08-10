@@ -1,8 +1,7 @@
 export interface RegisterData {
   name: string;
   email: string;
-  password: string;
-  retype_password: string;
+  password: string
 }
 export interface LoginData {
   email: string;

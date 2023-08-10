@@ -1,28 +1,39 @@
-<div class="mx-8">
-    <div class="px-4 shadow-2xl max-w-xs sm:max-w-md mx-auto">
-      <div class="py-4 px-4 rounded-md">
-        <form method="post" class="flex flex-col" [formGroup]="loginForm" (submit)="login()">
-          <!-- takign email input -->
-          <label for="email" class="mt-4 pl-0.5 pb-1">Email</label>
-          <input [ngClass]="{'border border-gray-400 rounded focus:outline-none px-2 py-1 sm:px-3 sm:py-2':true,'border-red-500 bg-rose-100':loginForm.controls['email'].dirty && loginForm.controls['email'].invalid,'border-emerald-500 bg-emerald-100':loginForm.controls['email'].valid}" type="email" name="email" id="email" formControlName="email">
-          <!--showing email error message -->
-          <div class="pl-0.5" *ngIf="loginForm.controls['email']?.dirty && loginForm.controls['email']?.invalid">
-            <span class="text-red-600" *ngIf="loginForm.controls['email']?.errors?.['required']">Email is required</span>
-            <span class="text-red-600" *ngIf="loginForm.controls['email']?.errors?.['pattern']">Invalid email id</span>
-          </div>
-          <!-- takign password input -->
-          <label for="password" class="mt-4 pl-0.5 pb-1">Password</label>
-          <input [ngClass]="{'border border-gray-400 rounded focus:outline-none px-2 py-1 sm:px-3 sm:py-2':true,'border-red-500 bg-rose-100':loginForm.controls['password'].dirty && loginForm.controls['password'].invalid,'border-emerald-500 bg-emerald-100':loginForm.controls['password'].valid}" type="password" name="password" id="password" formControlName="password">
-          <!--showing password error message -->
-          <div class="pl-0.5" *ngIf="loginForm.controls['password']?.dirty && loginForm.controls['password']?.invalid">
-            <span class="text-red-600" *ngIf="loginForm.controls['password']?.errors?.['required']">Password is required</span>
-            <!-- <span class="text-red-600" *ngIf="loginForm.controls['password']?.errors?.['minlength']">Password must be minimum of 8 charecters long</span>
-            <span class="text-red-600" *ngIf="loginForm.controls['password']?.errors?.['maxlength']">Password must be maximum of 20 charecters long</span> -->
-            <span class="text-red-600" *ngIf="loginForm.controls['password']?.errors?.['pattern']">Password must be contain one uppercase, one lowercase, one number, one special charecter and 8 to 20 charecters long</span>
-          </div>
-          <!-- button for sign in -->
-          <button class="text-white bg-cyan-600 rounded hover:bg-cyan-700 px-8 py-2 mt-4 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-cyan-600" [disabled]="loginForm.invalid">Sign In</button>
-        </form>
+<div class="flex h-[calc(100vh-64px)] items-center justify-center ">
+  <div class="py-4 px-4 shadow-2xl w-80 rounded-md border border-dashed border-gray-400">
+    <form method="post" class="flex flex-col" [formGroup]="loginForm" (submit)="login()">
+      <!-- takign email input -->
+      <label for="email" class="mt-4 pl-0.5 pb-1">Email</label>
+      <input
+        [ngClass]="{'border border-gray-400 rounded focus:outline-none px-2 py-1 sm:px-3 sm:py-2':true,'border-red-500 bg-rose-100':loginForm.controls['email'].dirty && loginForm.controls['email'].invalid,'border-emerald-500 bg-emerald-100':loginForm.controls['email'].valid}"
+        type="email" name="email" id="email" formControlName="email">
+      <!--showing email error message -->
+      <div class="pl-0.5" *ngIf="loginForm.controls['email']?.dirty && loginForm.controls['email']?.invalid">
+        <span class="text-red-600" *ngIf="loginForm.controls['email']?.errors?.['required']">Email is required</span>
+        <span class="text-red-600" *ngIf="loginForm.controls['email']?.errors?.['pattern']">Invalid email id</span>
       </div>
+      <!-- takign password input -->
+      <label for="password" class="mt-4 pl-0.5 pb-1">Password</label>
+      <input
+        [ngClass]="{'border border-gray-400 rounded focus:outline-none px-2 py-1 sm:px-3 sm:py-2':true,'border-red-500 bg-rose-100':loginForm.controls['password'].dirty && loginForm.controls['password'].invalid,'border-emerald-500 bg-emerald-100':loginForm.controls['password'].valid}"
+        type="password" name="password" id="password" formControlName="password">
+      <!--showing password error message -->
+      <div class="pl-0.5" *ngIf="loginForm.controls['password']?.dirty && loginForm.controls['password']?.invalid">
+        <span class="text-red-600" *ngIf="loginForm.controls['password']?.errors?.['required']">Password is
+          required</span>
+        <!-- <span class="text-red-600" *ngIf="loginForm.controls['password']?.errors?.['minlength']">Password must be minimum of 8 charecters long</span>
+            <span class="text-red-600" *ngIf="loginForm.controls['password']?.errors?.['maxlength']">Password must be maximum of 20 charecters long</span> -->
+        <span class="text-red-600" *ngIf="loginForm.controls['password']?.errors?.['pattern']">Password must be contain
+          one uppercase, one lowercase, one number, one special charecter and 8 to 20 charecters long</span>
+      </div>
+      <!-- button for sign in -->
+      <button
+        class="text-white bg-cyan-600 rounded hover:bg-cyan-700 px-8 py-2 mt-4 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-cyan-600"
+        [disabled]="loginForm.invalid">Log In</button>
+    </form>
+    <div class="text-center mt-4">
+      <p class="text-sm text-gray-700">Don't have an account? <a routerLink="/signup"
+        class="text-blue-600 font-semibold hover:text-blue-800">Sign up</a>
+      </p>
     </div>
   </div>
+</div>

@@ -39,7 +39,8 @@
               "node_modules/@editorjs/link/dist/bundle.js",
               "node_modules/@editorjs/image/dist/bundle.js",
               "node_modules/@editorjs/delimiter/dist/bundle.js",
-              "node_modules/@editorjs/code/dist/bundle.js"
+              "node_modules/@editorjs/code/dist/bundle.js",
+              "node_modules/@editorjs/simple-image/dist/bundle.js"
             ]
           },
           "configurations": {

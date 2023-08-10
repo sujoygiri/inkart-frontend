@@ -15,9 +15,11 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class PostCreatingComponent implements OnInit, OnDestroy, AfterViewInit {
 
-  editor: EditorJS = new EditorJS();
+  editor!: EditorJS;
   editorInitialized: boolean = true;
   postSaveSubscription: Subscription = new Subscription();
+  @ViewChild('editor')
+  editorDivElement!:ElementRef;
 
   constructor(private postService:PostService) {}
 
@@ -25,9 +27,11 @@ export class PostCreatingComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.editor = new EditorJS({
-      holder: 'editor',
+      holder: this.editorDivElement.nativeElement,
       placeholder: 'Let`s write an awesome story! (Enter title here)',
       // autofocus: true,
+      // defaultBlock:'header',
+      minHeight:0,
       inlineToolbar: ['link', 'bold', 'italic'],
       tools: {
         header: {
@@ -35,7 +39,7 @@ export class PostCreatingComponent implements OnInit, OnDestroy, AfterViewInit {
           class: Header,
           inlineToolbar: ['link', 'bold', 'italic'],
           config: {
-            placeholder: 'Enter a header',
+            placeholder: 'Enter title here',
             levels: [1, 2, 3, 4, 5, 6],
             defaultLevel: 1,
             onActivate(){
@@ -98,8 +102,18 @@ export class PostCreatingComponent implements OnInit, OnDestroy, AfterViewInit {
 
   async publish() {
     let editorData = await this.editor.save();
-    let postData = JSON.stringify(editorData.blocks);
-    this.postSaveSubscription = this.postService.savePost(postData).subscribe({});
+    let articaleData = JSON.stringify(editorData.blocks);
+    console.log(articaleData);
+    console.log('parsing.....');
+    
+    setTimeout(() => {
+      let parsedArticaleData = JSON.parse(articaleData)
+      console.log(parsedArticaleData);
+      console.log('parsing done.');
+      
+    }, 3000);
+    
+    // this.postSaveSubscription = this.postService.savePost(articaleData).subscribe({});
   }
 }
 

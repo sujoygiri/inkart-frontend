@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { GlobalService } from 'src/app/global.service';
 import {PostService} from "../../services/post.service";
@@ -32,7 +33,11 @@ export class HomeComponent implements OnInit {
   isLoggedIn: boolean = false;
   userName: string = '';
 
-  constructor(protected globalService: GlobalService, private postService:PostService) {}
+  constructor(
+    protected globalService: GlobalService, 
+    private postService:PostService,
+    private router:Router
+  ) {}
 
   ngOnInit(): void {
     this.postService.fetchPost().subscribe({
@@ -44,4 +49,13 @@ export class HomeComponent implements OnInit {
       }
     })
   }
+
+  goToSignInPage(){
+    this.router.navigate(['login'])
+  }
+
+  closeModal(){
+    this.globalService.showSigninNeededModal = false;
+  }
+
 }
