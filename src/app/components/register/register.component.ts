@@ -49,6 +49,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         console.log(error);
       },
       complete:()=>{
+        this.globalService.showSigninNeededModal = false;
         this.router.navigate(['/']);
       }
     })

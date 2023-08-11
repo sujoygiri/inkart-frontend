@@ -48,7 +48,8 @@ export class SigninComponent implements OnInit, OnDestroy {
         console.log(error);
       },
       complete: () => {
-        this.router.navigate(['/home']);
+        this.globalService.showSigninNeededModal = false;
+        this.router.navigate(['/']);
       }
     });
   }

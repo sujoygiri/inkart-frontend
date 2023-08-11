@@ -7,6 +7,6 @@ import { HttpClient } from '@angular/common/http';
 export class GlobalService {
   userName: string = 'Guest';
   isLoggedIn: boolean = false;
-  showSigninNeededModal = false;
+  showSigninNeededModal:boolean = false;
   profilePic:string = '';
 }

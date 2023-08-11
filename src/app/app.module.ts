@@ -12,6 +12,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { PostCreatingComponent } from './components/post-creating/post-creating.component';
 import { CreateElementDirective } from './directives/create-element.directive';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PostDetailComponent } from './components/post-detail/post-detail.compon
     RegisterComponent,
     PostCreatingComponent,
     CreateElementDirective,
-    PostDetailComponent
+    PostDetailComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,

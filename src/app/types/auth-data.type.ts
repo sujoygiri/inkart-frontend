@@ -8,6 +8,11 @@ export interface LoginData {
   password: string;
 }
 
+export interface LogoutResponse{
+  success:number;
+  msg:string;
+}
+
 export interface ServerAuthResponse {
   status: string;
   message: string;

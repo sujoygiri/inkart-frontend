@@ -6,6 +6,7 @@ import {
   RegisterData,
   LoginData,
   ServerAuthResponse,
+  LogoutResponse,
 } from '../types/auth-data.type';
 
 @Injectable({
@@ -30,6 +31,10 @@ export class AuthService {
       { email: data.email, password: data.password },
       { withCredentials: true }
     );
+  }
+
+  logout():Observable<LogoutResponse>{
+    return this.http.delete<LogoutResponse>(this.url + 'logout',{withCredentials:true});
   }
 
   authenticate() {
