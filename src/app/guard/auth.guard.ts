@@ -7,6 +7,9 @@ import { AuthService } from '../services/auth.service';
 import { ServerAuthResponse } from '../types/auth-data.type';
 
 export const authGuard: CanActivateFn = (route, state) => {
+  // console.log('route',route);
+  // console.log('state',state);
+  
   const globalService = inject(GlobalService)
   const authService = inject(AuthService);
   const router = inject(Router);
@@ -20,6 +23,7 @@ export const authGuard: CanActivateFn = (route, state) => {
         router.navigate(['/']);
         return false;
       }else{
+        globalService.showSigninNeededModal = false
         return true;
       }
     }),

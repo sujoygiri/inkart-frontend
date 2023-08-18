@@ -27,6 +27,8 @@
     "@editorjs/link": "^2.5.0",
     "@editorjs/list": "^1.8.0",
     "@editorjs/quote": "^2.5.0",
+    "@ngx-loading-bar/core": "^6.0.2",
+    "@ngx-loading-bar/http-client": "^6.0.2",
     "codex-notifier": "^1.1.2",
     "codex-tooltip": "^1.0.5",
     "froala-editor": "^4.0.19",

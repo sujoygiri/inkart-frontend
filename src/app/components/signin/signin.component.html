@@ -20,10 +20,14 @@
       <div class="pl-0.5" *ngIf="loginForm.controls['password']?.dirty && loginForm.controls['password']?.invalid">
         <span class="text-red-600" *ngIf="loginForm.controls['password']?.errors?.['required']">Password is
           required</span>
-        <!-- <span class="text-red-600" *ngIf="loginForm.controls['password']?.errors?.['minlength']">Password must be minimum of 8 charecters long</span>
-            <span class="text-red-600" *ngIf="loginForm.controls['password']?.errors?.['maxlength']">Password must be maximum of 20 charecters long</span> -->
-        <span class="text-red-600" *ngIf="loginForm.controls['password']?.errors?.['pattern']">Password must be contain
-          one uppercase, one lowercase, one number, one special charecter and 8 to 20 charecters long</span>
+        <span class="text-red-600" *ngIf="loginForm.controls['password']?.errors?.['minlength']">Password must be minimum of 8 charecters long</span>
+        <span class="text-red-600" *ngIf="loginForm.controls['password']?.errors?.['maxlength']">Password must be maximum of 50 charecters long
+        </span>
+        <span *ngIf="!loginForm.controls['password']?.errors?.['minlength'] && !loginForm.controls['password']?.errors?.['maxlength']">
+          <span class="text-red-600" *ngIf="loginForm.controls['password']?.errors?.['pattern']">Password must be
+            contain one uppercase, one lowercase, one number and one special charecter.
+          </span>
+        </span>
       </div>
       <!-- button for sign in -->
       <button

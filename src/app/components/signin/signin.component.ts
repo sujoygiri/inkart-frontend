@@ -27,7 +27,7 @@ export class SigninComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.loginForm = this.fromBuilder.group({
       email:['',[Validators.required,Validators.pattern(/^[a-zA-Z0-9.]+@[a-zA-Z0-9.]+\.[a-zA-Z]{2,}/)]],
-      password:['',[Validators.required,Validators.pattern(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,20}$/)]]
+      password:['',[Validators.required,Validators.minLength(8),Validators.maxLength(50),Validators.pattern(/^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,50}$/)]]
     })
   }
 
